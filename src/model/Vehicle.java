@@ -5,9 +5,10 @@ public class Vehicle
   private int x;
   private int y;
   
-  public Vehicle()
+  public Vehicle(int x, int y)
   {
-	
+	this.x = x;
+	this.y = y;
   }
   
   public int getXPos()
