@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Intersection
 {
   private ArrayList<Road> roadsConnected;
-
-  public Intersection()
+  private String location;
+  
+  public Intersection(String loc)
   {
     roadsConnected = new ArrayList<Road>();
+    location = loc;
   }
 
   public void addRoad(Road r)
@@ -21,12 +23,16 @@ public class Intersection
 	else
 	{
 	  System.out.println("Most intersection in the Philippines has only 4 roads.");
-	}
-    
+	} 
   }
 
   public ArrayList<Road> getRoads()
   {
     return roadsConnected;
+  }
+  
+  public String getLocation()
+  {
+	return location;
   }
 }

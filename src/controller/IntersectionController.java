@@ -30,38 +30,49 @@ public class IntersectionController
     int max = 0;
     int index = 0;
     
-    for (int i = 0; i <= roads.size(); i++)
+    max = this.getMaxCar(roads, 0, roads.size() - 1);
+    
+    for (int i = 0; i < roads.size(); i++)
     {
-      if (i < roads.size())
+      if (roads.get(i).getQueueSize() == max)
       {
-    	max = roads.get(i).getAllCars().size();
     	index = i;
-      }
-      
-      if (i < roads.size() - 1)
-      {
-    	int candidate = roads.get(i + 1).getAllCars().size();
-    	
-    	if (candidate > max)
-    	{
-    	  max = candidate;
-    	  index = i;
-    	}
-      }
-      
-      else
-      {
-    	int candidate = roads.get(i - 1).getAllCars().size();
-    	
-    	if (candidate > max)
-    	{
-    	  max = candidate;
-    	  index = i;
-    	}
       }
     }
     
-    System.out.println("Num of most cars: " + max + " on road number: " + index);
-    roads.get(index).getLight().changeLightSignal(true);
+    System.out.println(this.getMaxCar(roads, 0, roads.size() - 1));
+    
+    System.out.println("Num of most cars: " + max + " on road number: " + (index + 1)); // +1 since road number starts at #1 when displaying and #0 at arraylists
+    Road roadToGo = roads.get(index);
+    roadToGo.getLight().changeLightSignal(true);
+  }
+  
+  private int getMaxCar(ArrayList<Road> roads, int start, int end)
+  {
+	int max = 0;
+	
+	if (start == end)
+	{
+	  return roads.get(start).getQueueSize();
+	}
+	
+	else
+	{
+	  int mid = (int) Math.floor((start + end) / 2);
+	  int first = getMaxCar(roads, start, mid);
+	  int second = getMaxCar(roads, mid + 1, end);
+	  
+	  if (first > second)
+	  {
+		max = first;
+	  }
+	  
+	  else
+	  {
+		max = second;
+	  }
+	  
+	  return max;
+	}
   }
 }

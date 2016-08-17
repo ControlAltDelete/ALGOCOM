@@ -53,25 +53,71 @@ public class MainWindow
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	Vehicle veh = new Vehicle(1, 10);
-	Road road1 = new Road();
+	Road road1 = new Road("North");
 	road1.addCar(veh);
 	road1.addCar(veh);
 	road1.addCar(veh);
 	road1.addCar(veh);
 	
-	Road road2 = new Road();
+	Road road2 = new Road("South");
 	road2.addCar(veh);
 	
-	Road road3 = new Road();
+	Road road3 = new Road("East");
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
+	road3.addCar(veh);
 	road3.addCar(veh);
 	road3.addCar(veh);
 	road3.addCar(veh);
 	road3.addCar(veh);
 	road3.addCar(veh);
 	
-	Road road4 = new Road();
+	Road road4 = new Road("West");
 	road4.addCar(veh);
-	Intersection inter = new Intersection();
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	road4.addCar(veh);
+	
+	Intersection inter = new Intersection("West");
 	
 	inter.addRoad(road1);
 	inter.addRoad(road2);

@@ -4,19 +4,20 @@ import java.util.ArrayList;
 
 public class Road
 {
-  private String direction;
+  private String location;
   private ArrayList<Vehicle> currentCars;
   private Light assignedLight;
 
-  public Road()
+  public Road(String location)
   {
 	currentCars = new ArrayList<Vehicle>();
 	assignedLight = new Light();
+	this.location = location;
   }
 
-  public String getDirection()
+  public String getLocation()
   {
-	return direction;
+	return location;
   }
   
   public Light getLight()
@@ -37,5 +38,10 @@ public class Road
   public ArrayList<Vehicle> getAllCars()
   {
 	return this.currentCars;
+  }
+  
+  public int getQueueSize()
+  {
+	return currentCars.size();
   }
 }
