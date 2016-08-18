@@ -28,7 +28,7 @@ public class IntersectionController
   {
     ArrayList<Road> roads = n.getRoads();
     int max = 0;
-    int index = 0;
+    int maxIndex = 0;
     
     max = this.getMaxCar(roads, 0, roads.size() - 1);
     
@@ -36,14 +36,15 @@ public class IntersectionController
     {
       if (roads.get(i).getQueueSize() == max)
       {
-    	index = i;
+    	maxIndex = i;
+    	i = roads.size();
       }
     }
     
     System.out.println(this.getMaxCar(roads, 0, roads.size() - 1));
     
-    System.out.println("Num of most cars: " + max + " on road number: " + (index + 1)); // +1 since road number starts at #1 when displaying and #0 at arraylists
-    Road roadToGo = roads.get(index);
+    System.out.println("Num of most cars: " + max + " on road number: " + (maxIndex + 1)); // +1 since road number starts at #1 when displaying and #0 at arraylists
+    Road roadToGo = roads.get(maxIndex);
     roadToGo.getLight().changeLightSignal(true);
   }
   

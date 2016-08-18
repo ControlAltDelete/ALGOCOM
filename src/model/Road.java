@@ -27,7 +27,10 @@ public class Road
 
   public void addCar(Vehicle vehicle)
   {
-	currentCars.add(vehicle);
+	if (currentCars.size() < 10)
+	{
+	  currentCars.add(vehicle);
+	}
   }
 
   public void removeCar()
