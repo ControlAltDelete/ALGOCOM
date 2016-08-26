@@ -31,10 +31,6 @@ public class RoadController
 	  int x = rand.nextInt(maxX);
 	  int y = rand.nextInt(maxY);
 
-	  for (int i = 0; i < numCars; i++)
- 	  {
-	    Vehicle temp = new Vehicle(x, y);
-	    r.addCar(temp);
-	  }
+
   }
 }

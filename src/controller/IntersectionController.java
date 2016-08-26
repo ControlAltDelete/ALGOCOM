@@ -48,6 +48,26 @@ public class IntersectionController
     roadToGo.getLight().changeLightSignal(true);
   }
   
+  private void transferCars(Road r, Intersection n)
+  {
+	if (r.getLocation().equals("North"))
+	{
+	  if (r.getAllCars().get(0).getDirection().equals("Southbound"))
+	  {
+		n.getRoads().get(1).addCar(r.getAllCars().get(0));
+		r.getAllCars().remove(0);
+	  }
+	}
+	
+	else if (r.getLocation().equals("South"))
+	{
+	  if (r.getAllCars().get(0).getDirection().equals("Northbound"))
+	  {
+		n.getRoads().get(0).addCar(r.getAllCars().get(0));
+	  }
+	}
+  }
+  
   private int getMaxCar(ArrayList<Road> roads, int start, int end)
   {
 	int max = 0;
