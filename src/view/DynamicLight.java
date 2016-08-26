@@ -79,9 +79,9 @@ public class DynamicLight extends Game
   public void update(long elapsedTime)
   {
 	// TODO Auto-generated method stub
-	//this.movePlayer(elapsedTime, SOUTH_GROUP.getActiveSprite(), SOUTH_GROUP);
-	this.chooseRoad(elapsedTime);
-	this.despawn();
+	this.movePlayer(elapsedTime, SOUTH_GROUP.getActiveSprite(), SOUTH_GROUP);
+	String direction = this.chooseRoad(elapsedTime);
+	this.despawn(direction);
 	//this.spawner(SOUTH_GROUP.getActiveSprite(), elapsedTime);
 
   }
@@ -143,11 +143,12 @@ public class DynamicLight extends Game
 //	for (int i = 0; i  <roads.size())
 //  }
   
-  private void chooseRoad(long elapsedTime)
+  private String chooseRoad(long elapsedTime)
   {
 	IntersectionController ic = IntersectionController.getInstance();
 	int max = ic.getMaxCar(roads, 0, roads.size() - 1);
 	int index = 0;
+	String direction = "";
 	
 	for (int i = 0; i < roads.size(); i++)
 	{
@@ -163,7 +164,7 @@ public class DynamicLight extends Game
 	for (int i = 0; i < cand.getSize(); i++)
 	{
 	  Sprite s = cand.getSprites()[i];
-	  String direction = cand.getName();
+	  direction = cand.getName();
 	  
 	  if (direction.equals("West"))
 	  {
@@ -185,18 +186,36 @@ public class DynamicLight extends Game
 		s.move(-0.1 * elapsedTime, 0);
 	  }
 	}
+	
+	return direction;
   }
   
-  private void despawn()
+  private void despawn(String direction)
   {
-	if (SOUTH_GROUP.getActiveSprite().getY() < 48.00)
+	if (direction.equals("South"))
 	{
-	  for (int i = 0; i < SOUTH_GROUP.getSize(); i++)
-	  {
-		Sprite s = SOUTH_GROUP.getSprites()[i];
-		
-		SOUTH_GROUP.remove(i);
-	  }
+	  if (SOUTH_GROUP.getActiveSprite().getY() < 48.00)
+  	  {
+  	    for (int i = 0; i < SOUTH_GROUP.getSize(); i++)
+  	    {
+  		  Sprite s = SOUTH_GROUP.getSprites()[i];
+  		
+  		  SOUTH_GROUP.remove(i);
+  	    }
+  	  } 
+	}
+	
+	else if (direction.equals("West"))
+	{
+	  if (WEST_GROUP.getActiveSprite().getX() > 476.2)
+  	  {
+  	    for (int i = 0; i < WEST_GROUP.getSize(); i++)
+  	    {
+  		  Sprite s = WEST_GROUP.getSprites()[i];
+  		
+  		  WEST_GROUP.remove(i);
+  	    }
+  	  } 
 	}
   }
   
