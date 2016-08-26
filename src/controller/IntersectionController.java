@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
+import com.golden.gamedev.object.SpriteGroup;
+
 import model.Intersection;
 import model.Road;
 
@@ -30,18 +32,18 @@ public class IntersectionController
     int max = 0;
     int maxIndex = 0;
     
-    max = this.getMaxCar(roads, 0, roads.size() - 1);
-    
-    for (int i = 0; i < roads.size(); i++)
-    {
-      if (roads.get(i).getQueueSize() == max)
-      {
-    	maxIndex = i;
-    	i = roads.size();
-      }
-    }
-    
-    System.out.println(this.getMaxCar(roads, 0, roads.size() - 1));
+//    max = this.getMaxCar(roads, 0, roads.size() - 1);
+//    
+//    for (int i = 0; i < roads.size(); i++)
+//    {
+//      if (roads.get(i).getQueueSize() == max)
+//      {
+//    	maxIndex = i;
+//    	i = roads.size();
+//      }
+//    }
+//    
+//    System.out.println(this.getMaxCar(roads, 0, roads.size() - 1));
     
     System.out.println("Num of most cars: " + max + " on road number: " + (maxIndex + 1)); // +1 since road number starts at #1 when displaying and #0 at arraylists
     Road roadToGo = roads.get(maxIndex);
@@ -68,13 +70,13 @@ public class IntersectionController
 	}
   }
   
-  private int getMaxCar(ArrayList<Road> roads, int start, int end)
+  public int getMaxCar(ArrayList<SpriteGroup> roads, int start, int end)
   {
 	int max = 0;
 	
 	if (start == end)
 	{
-	  return roads.get(start).getQueueSize();
+	  return roads.get(start).getSize();
 	}
 	
 	else
